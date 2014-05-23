@@ -30,26 +30,35 @@ public class MainActivity extends Activity {
       attempts.setText(Integer.toString(counter));
       login = (Button)findViewById(R.id.button1);
   
-   //   login = (Button) findViewById(R.id.bLaunchWelcomeActivity); 
-		login.setOnClickListener(new OnClickListener() 
-		{
-			
-			@Override
-			public void onClick(View v) {
-				// TODO:
-				// Launch Activity Two
-				// Hint: use Context's startActivity() method
-
-				// Create an intent stating which Activity you would like to start
-
-
-				Intent startActivity = new Intent(MainActivity.this, WelcomeActivity.class);
-	            startActivity(startActivity);
-	            // Launch the Activity using the intent
-
-			
-			}
-		});
+      login = (Button) findViewById(R.id.button1);
+      
+      // Capture button clicks
+      login.setOnClickListener(new OnClickListener() 
+      {
+          public void onClick(View arg0) 
+          {
+        	  if(username.getText().toString().equals("admin") && 
+        		      password.getText().toString().equals("admin"))
+        	  {
+              // Start NewActivity.class
+              Intent myIntent = new Intent(MainActivity.this,
+                      WelcomeActivity.class);
+              startActivity(myIntent);
+        	  }
+        	  else
+        	   {
+        	      Toast.makeText(getApplicationContext(), "Wrong Credentials",
+        	      Toast.LENGTH_SHORT).show();
+        	      attempts.setBackgroundColor(Color.RED);	
+        	      counter--;
+        	      attempts.setText(Integer.toString(counter));
+        	      if(counter==0){
+        	         login.setEnabled(false);
+        	      }
+        	   }
+          }
+      });
+		
    }
 
    public void login(View view)
