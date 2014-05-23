@@ -30,8 +30,8 @@ public class MainActivity extends Activity {
       attempts.setText(Integer.toString(counter));
       login = (Button)findViewById(R.id.button1);
   
-      Button launchActivityTwoButton = (Button) findViewById(R.id.bLaunchWelcomeActivity); 
-		launchActivityTwoButton.setOnClickListener(new OnClickListener() 
+   //   login = (Button) findViewById(R.id.bLaunchWelcomeActivity); 
+		login.setOnClickListener(new OnClickListener() 
 		{
 			
 			@Override
